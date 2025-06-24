@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Café Moderne</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap');
+        :root {
+            --primary: #7b4f2c;
+            --secondary: #e0c097;
+            --accent: #ffe9c7;
+            --bg: #f6f4f1;
+            --white: #fff;
+            --shadow: 0 8px 32px rgba(123,79,44,0.08);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', 'Roboto', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+        }
+        header {
+            background: linear-gradient(120deg, var(--primary) 60%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 56px 0 32px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 60px;
+            background: var(--bg);
+            border-radius: 100% 100% 0 0 / 60px 60px 0 0;
+            z-index: 1;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3.2em;
+            letter-spacing: 2px;
+            font-weight: 700;
+            z-index: 2;
+            position: relative;
+        }
+        header p {
+            margin-top: 18px;
+            font-size: 1.25em;
+            font-weight: 400;
+            z-index: 2;
+            position: relative;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            margin: 32px 0 0 0;
+            z-index: 2;
+            position: relative;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            padding: 8px 18px;
+            border-radius: 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 40px 40px 32px 40px;
+            position: relative;
+            top: -40px;
+            z-index: 2;
+        }
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+        .about img {
+            width: 340px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(123,79,44,0.10);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 240px;
+        }
+        .about-text h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .about-text p {
+            font-size: 1.15em;
+            color: #5a3c1a;
+            line-height: 1.7;
+        }
+        .menu {
+            margin-top: 24px;
+        }
+        .menu h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.7em;
+        }
+        .menu-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+        .menu-item {
+            background: var(--accent);
+            border-radius: 16px;
+            padding: 28px 18px 22px 18px;
+            box-shadow: 0 2px 12px rgba(123,79,44,0.06);
+            text-align: center;
+            transition: transform 0.15s, box-shadow 0.15s;
+            position: relative;
+        }
+        .menu-item:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(123,79,44,0.13);
+        }
+        .menu-item h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+        .menu-item p {
+            margin: 0;
+            color: #6b4f27;
+            font-size: 1em;
+        }
+        .menu-item .emoji {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .menu-item .price {
+            display: block;
+            margin-top: 12px;
+            color: #a67c52;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .contact {
+            margin-top: 56px;
+            background: var(--secondary);
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 2px 12px rgba(123,79,44,0.06);
+            text-align: center;
+        }
+        .contact h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.4em;
+        }
+        .contact p {
+            font-size: 1.1em;
+            color: #5a3c1a;
+            line-height: 1.7;
+        }
+        .contact a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 28px 0;
+            background: var(--primary);
+            color: var(--white);
+            margin-top: 48px;
+            border-radius: 0 0 24px 24px;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 900px) {
+            .container {
+                padding: 24px 8px 16px 8px;
+            }
+            .about img {
+                width: 100%;
+                max-width: 340px;
+            }
+        }
+        @media (max-width: 700px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+            .container {
+                padding: 12px 2vw 8px 2vw;
+            }
+            .menu-list {
+                grid-template-columns: 1fr;
+            }
+            .contact {
+                padding: 20px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Café Moderne</h1>
+        <p>Un lieu chaleureux pour savourer le meilleur café en ville</p>
+        <nav>
+            <a href="#about" class="active">À propos</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="about" id="about">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Café Moderne">
+            <div class="about-text">
+                <h2>À propos de nous</h2>
+                <p>
+                    Bienvenue au <strong>Café Moderne</strong>, un espace convivial où l'arôme du café fraîchement moulu se mêle à une ambiance moderne et cosy. Profitez de notre wifi gratuit, d'une playlist chill et d'une équipe passionnée prête à vous servir vos boissons préférées ou une douceur maison.
+                </p>
+            </div>
+        </section>
+        <section class="menu" id="menu">
+            <h2>Notre Menu</h2>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <span class="emoji">☕</span>
+                    <h3>Espresso</h3>
+                    <p>Un café intense et corsé, parfait pour démarrer la journée.</p>
+                    <span class="price">2,50&nbsp;€</span>
+                </div>
+                <div class="menu-item">
+                    <span class="emoji">🥛</span>
+                    <h3>Cappuccino</h3>
+                    <p>Un mélange onctueux de café, lait chaud et mousse légère.</p>
+                    <span class="price">3,20&nbsp;€</span>
+                </div>
+                <div class="menu-item">
+                    <span class="emoji">🧋</span>
+                    <h3>Latte</h3>
+                    <p>Un café doux avec une généreuse portion de lait chaud.</p>
+                    <span class="price">3,50&nbsp;€</span>
+                </div>
+                <div class="menu-item">
+                    <span class="emoji">🥐</span>
+                    <h3>Pâtisseries</h3>
+                    <p>Croissants, muffins et douceurs maison pour accompagner votre café.</p>
+                    <span class="price">2,00&nbsp;€</span>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <h2>Contact</h2>
+            <p>
+                📍 123 Rue du Café, Paris<br>
+                📞 <a href="tel:0123456789">01 23 45 67 89</a><br>
+                ✉️ <a href="mailto:contact@cafemoderne.fr">contact@cafemoderne.fr</a>
+            </p>
+            <p>
+                Suivez-nous :
+                <a href="#" title="Instagram">Instagram</a> ·
+                <a href="#" title="Facebook">Facebook</a>
+            </p>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Café Moderne. Tous droits réservés.
+    </footer>
+    <script>
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            this.classList.add('active');
+        });
+        link.addEventListener('mouseleave', function() {
+            // Optionnel : remettre la classe active sur le lien d'origine si besoin
+            // Ici, on ne fait rien pour garder le bouton actif seulement au survol
+        });
+    });
+    </script>
+</body>
+</html>
